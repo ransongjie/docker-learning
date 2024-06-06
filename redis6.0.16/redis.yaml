@@ -1,0 +1,14 @@
+version: '3'
+services:
+  redis:
+    image: redis:6.0.16
+    container_name: redis6
+    hostname: redis6
+    restart: always
+    ports:
+      - '49153:6379' # 端口映射
+    volumes:
+      - './redis.conf:/usr/local/etc/redis/redis.conf'
+      - './redis-6379.conf:/usr/local/etc/redis/redis-6379.conf'
+      - './data:/data'
+    command: redis-server /usr/local/etc/redis/redis-6379.conf # 在容器中执行的命令
