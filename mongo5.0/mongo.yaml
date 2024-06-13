@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mongo5:
+    image: mongo:5.0
+    container_name: mongo5
+    hostname: mongo5
+    restart: always
+    ports:
+     - 27017:27017
+    volumes:
+     - /etc/localtime:/etc/localtime # 时区
+     - ./db:/data/db # 挂载数据目录
+     - ./log:/var/log/mongodb  # 挂载日志目录
+     - ./cfg:/etc/mongo  # 挂载配置目录

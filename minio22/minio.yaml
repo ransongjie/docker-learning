@@ -1,0 +1,17 @@
+version: '3'
+services:
+  minio:
+    image: minio/minio:RELEASE.2022-08-02T23-59-16Z.fips
+    container_name: minio22
+    hostname: minio22
+    restart: always
+    command: server /data --console-address :9001
+    ports:
+      - 49159:9000 # api port 接口调用
+      - 49158:9001 # console port 浏览器访问
+    environment:
+      MINIO_ACCESS_KEY: "minio"
+      MINIO_SECRET_KEY: "minio"
+    volumes:
+      - ./data:/data
+      - ./config:/root/.minio
